@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All About Kenn 🌌</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #05051a;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: transparent;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* STAR BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, #8d6cff 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 20px 30px, 70px 80px;
+    opacity: 0.35;
+    z-index: -1;
+    pointer-events: none;
+    animation: starsMove 30s linear infinite;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(90px);
+    }
+}
+
+/* OPENING */
+#opening {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #17104d, #05051a 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.opening-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.opening-content p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+#enterButton {
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #6c4cff, #a76cff);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(130, 90, 255, 0.6);
+    transition: 0.3s;
+}
+
+#enterButton:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(160, 120, 255, 0.9);
+}
+
+/* MUSIC BUTTON */
+#musicButton {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(80, 50, 180, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(130, 80, 255, 0.6);
+    transition: 0.3s;
+}
+
+#musicButton:hover {
+    transform: scale(1.1);
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: shine 3s infinite alternate;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+@keyframes shine {
+    from {
+        text-shadow: 0 0 10px #7b5cff;
+    }
+    to {
+        text-shadow: 0 0 35px #b39cff;
+    }
+}
+
+/* PLANET */
+.planet {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #a789ff, #351a75 70%);
+    right: 12%;
+    top: 20%;
+    box-shadow: 0 0 40px rgba(125, 90, 255, 0.6);
+    animation: planetFloat 5s ease-in-out infinite;
+}
+
+.planet::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 50px;
+    border: 8px solid rgba(200, 180, 255, 0.5);
+    border-radius: 50%;
+    left: -35px;
+    top: 50px;
+    transform: rotate(-15deg);
+}
+
+@keyframes planetFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* MOON */
+.moon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ddd8ff;
+    box-shadow: 0 0 30px rgba(220, 215, 255, 0.5);
+    left: 12%;
+    bottom: 18%;
+    animation: moonFloat 6s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+}
+
+/* SECTIONS */
+section:not(.hero) {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 25px;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 45px;
+    text-shadow: 0 0 15px rgba(140, 100, 255, 0.7);
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: rgba(25, 20, 65, 0.75);
+    border: 1px solid rgba(150, 120, 255, 0.25);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 35px rgba(110, 70, 255, 0.25);
+    border-color: rgba(170, 140, 255, 0.6);
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+/* INFO BOX */
+.info-box {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(25, 20, 65, 0.75);
+    border: 1px solid rgba(150, 120, 255, 0.25);
+    border-radius: 20px;
+    padding: 35px;
+    line-height: 2;
+    backdrop-filter: blur(10px);
+}
+
+/* CAREER */
+.career {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+.career-box {
+    background: rgba(25, 20, 65, 0.75);
+    border: 1px solid rgba(150, 120, 255, 0.25);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.career-box h3 {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+}
+
+.career-box p {
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+/* MUSIC */
+.music-section {
+    text-align: center;
+}
+
+.song-description {
+    max-width: 750px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+.spotify-player {
+    border-radius: 12px;
+    max-width: 700px;
+}
+
+/* THANK YOU */
+.thank-you {
+    text-align: center;
+}
+
+.thank-you p {
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+.verse {
+    max-width: 700px;
+    margin: 35px auto 0;
+    font-style: italic;
+    line-height: 1.8;
+    opacity: 0.8;
+}
+
+/* DIVIDER */
+.space-divider {
+    width: 70%;
+    height: 1px;
+    margin: auto;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(150, 110, 255, 0.7),
+        transparent
+    );
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+/* REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .planet {
+        width: 100px;
+        height: 100px;
+        right: -10px;
+        top: 12%;
+    }
+
+    .planet::before {
+        width: 150px;
+        height: 35px;
+        left: -25px;
+        top: 32px;
+    }
+
+    .moon {
+        width: 55px;
+        height: 55px;
+        left: 5%;
+        bottom: 10%;
+    }
+
+    section:not(.hero) {
+        padding: 70px 20px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .opening-content h1 {
+        font-size: 2.3rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<div id="opening">
+    <div class="opening-content">
+        <h1>Hello, I'm Kenn</h1>
+        <p>Welcome to my little corner of the universe 🌌</p>
+        <button id="enterButton" type="button" aria-label="Enter the All About Me website">✨ All About Me</button>
+    </div>
+</div>
+
+<!-- SPOTIFY BUTTON -->
+<a
+    id="musicButton"
+    href="https://open.spotify.com/track/0qvzXomUDJVaUboy2wMfiS"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Listen to my song on Spotify"
+    title="Listen to my song">
+    🎵
+</a>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Hi! I'm Kenn.</h1>
+        <p>
+            Welcome to my universe — a little story about who I am,
+            what I enjoy, and what I hope to become.
+        </p>
+    </div>
+
+    <div class="planet"></div>
+    <div class="moon"></div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- ABOUT ME -->
+<section class="reveal">
+    <h2>About Me</h2>
+
+    <div class="info-box">
+        <p><strong>Full Name:</strong> Kenn Roijan V. Lepiten</p>
+        <p><strong>School:</strong> Misamis Oriental General Comprehensive High School</p>
+        <p><strong>Grade & Section:</strong> Grade 9 - Clever Dalton</p>
+    </div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- THINGS I ENJOY -->
+<section class="reveal">
+    <h2>Things I Enjoy</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🎸 Playing Guitar</h3>
+            <p>
+                I like playing guitar in my free time. It helps me relax,
+                and I enjoy learning songs that I like.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎮 Gaming</h3>
+            <p>
+                I enjoy playing games whenever I have free time.
+                Gaming is one of the things I do to have fun and relax.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎧 Listening to Music</h3>
+            <p>
+                I really enjoy listening to music, especially when I'm
+                relaxing or just spending time by myself. Music always
+                makes my day better.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>♟️ Playing Chess</h3>
+            <p>
+                I enjoy playing chess because it challenges my mind.
+                I like thinking ahead, planning my moves, and trying
+                to outsmart my opponent.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏀 Sports</h3>
+            <p>
+                I enjoy playing sports because they keep me active
+                and give me a chance to have fun and improve my skills.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏃 Running</h3>
+            <p>
+                I enjoy running because it helps me stay active,
+                clear my mind, and improve my fitness.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📈 Trading</h3>
+            <p>
+                I enjoy learning about trading because it teaches me
+                how to analyze the market, make decisions, and understand
+                how money can grow.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎬 Watching Movies</h3>
+            <p>
+                I enjoy watching movies and shows in my free time.
+                My favorite show is <em>The Mentalist</em> because I enjoy
+                its mystery, characters, and clever way of solving cases.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- GOALS -->
+<section class="reveal">
+    <h2>My Goals</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📚 School</h3>
+            <p>
+                Become better at my studies and learn new skills.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💪 Fitness</h3>
+            <p>
+                Become stronger and healthier.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎸 Music</h3>
+            <p>
+                Improve my guitar skills and learn more songs.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💼 Business</h3>
+            <p>
+                Build my own business and learn how to manage it successfully.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- FUTURE CAREER -->
+<section class="reveal">
+    <h2>My Future Career</h2>
+
+    <div class="career">
+
+        <div class="career-box">
+            <h3>🏗️ Civil Engineering</h3>
+            <p>
+                I want to become a Civil Engineer because I am interested
+                in designing and building things that can help people and
+                communities. I want to create strong and useful structures
+                and use my skills to make a positive difference in the future.
+            </p>
+        </div>
+
+        <div class="career-box">
+            <h3>💼 Businessman</h3>
+            <p>
+                I also want to become a successful businessman because I am
+                interested in building something of my own, making smart
+                decisions, and creating opportunities for myself and others.
+                I want to learn how businesses work and hopefully build a
+                successful business in the future.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- SONG -->
+<section class="music-section reveal">
+    <h2>A Song I Like</h2>
+
+    <div class="career-box">
+        <h3>🎵 This Town — Niall Horan</h3>
+
+        <p class="song-description">
+            I like this song because I enjoy its relaxing sound and meaningful
+            lyrics. It has a calm feeling that makes it easy for me to enjoy.
+            I also like listening to it when I'm relaxing or thinking about
+            things. The song reminds me of memories and makes me appreciate
+            the simple moments in life.
+        </p>
+
+        <iframe
+            class="spotify-player"
+            src="https://open.spotify.com/embed/track/0qvzXomUDJVaUboy2wMfiS?utm_source=generator"
+            width="100%"
+            height="152"
+            style="border: 0;"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<div class="space-divider"></div>
+
+<!-- THANK YOU -->
+<section class="thank-you reveal">
+    <h2>Thank You! 🌌</h2>
+
+    <p>
+        Thank you for visiting my personal web page.
+        I hope you enjoyed learning a little more about me!
+    </p>
+
+    <div class="verse">
+        “For of him, and through him, and to him, are all things:
+        to whom be glory for ever. Amen.”
+        <br>
+        — Romans 11:36
+    </div>
+</section>
+
+<footer>
+    Made by Kenn Roijan V. Lepiten
+</footer>
+
+<script>
+const opening = document.getElementById("opening");
+const enterButton = document.getElementById("enterButton");
+
+enterButton.onclick = function () {
+    opening.classList.add("hide");
+};
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealElements() {
+    reveals.forEach(function(element) {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 120) {
+            element.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealElements, { passive: true });
+window.addEventListener("resize", revealElements);
+revealElements();
+</script>
+
+</body>
+</html>
